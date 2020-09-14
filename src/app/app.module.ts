@@ -38,5 +38,5 @@ import { PowerBoosterComponent } from './power-booster.component';
     ExponentialStrengthPipe
   ],
   bootstrap: [AppComponent]
-})
+}),
 export class AppModule { }
