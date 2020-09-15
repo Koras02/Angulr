@@ -10,7 +10,7 @@ import { HEROES } from './heroes';
 export class FlyingHeroesComponent {
   heroes: any[] = [];
   canFly = true;
-  mutate = ture;
+  mutate = true;
   title = 'Flying Heroes (pure pipe)';
 
   constructor() { this.reset(); }
@@ -32,7 +32,7 @@ export class FlyingHeroesComponent {
 @Component({
   selector: 'app-flying-heroes-impure',
   templateUrl: './flying-heroes-impure.component.html',
-  styles: ['.flyers, .all {font-style: italic'],
+  styles: ['.flyers, .all {font-style: italic}'],
 })
 export class FlyingHeroesImpureComponent extends FlyingHeroesComponent {
   title = 'Flying Heroes (impure pipe)';

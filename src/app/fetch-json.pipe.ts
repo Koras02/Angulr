@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Pipe, PipeTransform } from '@/angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name:'fetch',

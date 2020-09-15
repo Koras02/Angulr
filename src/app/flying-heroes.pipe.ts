@@ -10,7 +10,7 @@ export class FlyingHeroesPipe implements PipeTransform {
 }
 
 @Pipe({
-  name: 'flyingHeroesImpure;,
+  name: 'flyingHeroesImpure',
   pure: false
 })
 export class FlyingHeroesImpurePipe extends FlyingHeroesPipe {}
