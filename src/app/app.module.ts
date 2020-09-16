@@ -10,45 +10,11 @@ import { FlyingHeroesComponent, FlyingHeroesImpureComponent } from './flying-her
 import { FlyingHeroesImpurePipe, FlyingHeroesPipe } from './flying-heroes.pipe';
 import { HeroAsyncMessageComponent } from './hero-async-message.component';
 import { HeroBirthdayComponent } from './hero-birthday1.component';
-import { HeroBirthday2Component} from './hero-birthday2.component';
+import { HeroBirthday2Component } from './hero-birthday2.component';
 import { HeroListComponent } from './hero-list.component';
 import { PowerBoostCalculatorComponent } from './power-boost-calculator.component';
 import { PowerBoosterComponent } from './power-booster.component';
 
-
-import{ 
-  AfterContentParentComponent,
-  AfterContentComponent,
-  ChildComponent
-} from './after-content.component';
-
-import {
-  AfterViewParentComponent,
-  AfterViewComponent,
-  ChildViewComponent
-} from './after-view.component';
-
-import {
-  CounterParentComponent,
-  MyCounterComponent
-} from './counter.component';
-
-import {
-  DoCheckParentComponent,
-  DoCheckComponent 
-} from './do-check.component';
-
-import {
-  OnChangesParentComponent,
-  OnChangesComponent
-} from './on-changes.component';
-
-import { PeekABooParentComponent } from './peek-a-boo-parent.component';
-import { PeekABooComponent } from './peek-a-boo.component';
-
-import { SpyParentComponent } from './spy.compoennt';
-import { SpyDirective } from './spy.directive';
-import { OnChanges } from './on-changes.component.ts/on-changes.component.ts.component';
 
 @NgModule({
   imports: [
@@ -58,22 +24,6 @@ import { OnChanges } from './on-changes.component.ts/on-changes.component.ts.com
   ],
   declarations: [
     AppComponent,
-    AfterContentParentComponent,
-    AfterContentComponent,
-    ChildComponent,
-    AfterViewParentComponent,
-    AfterViewComponent,
-    ChildViewComponent,
-    CounterParentComponent,
-    MyCounterComponent,
-    DoCheckParentComponent,
-    DoCheckComponent,
-    OnChangesParentComponent,
-    OnChangesComponent,
-    PeekABooParentComponent,
-    PeekABooComponent,
-    SpyParentComponent,
-    SpyDirective,
     FlyingHeroesComponent,
     FlyingHeroesImpureComponent,
     HeroAsyncMessageComponent,
@@ -85,12 +35,15 @@ import { OnChanges } from './on-changes.component.ts/on-changes.component.ts.com
     FlyingHeroesPipe,
     FlyingHeroesImpurePipe,
     FetchJsonPipe,
-    ExponentialStrengthPipe,
-    OnChangesParentComponent,
-    OnChangesComponent,
-    
-    OnChanges.Component.TsComponent
+    ExponentialStrengthPipe
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

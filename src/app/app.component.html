@@ -1,37 +1,80 @@
- <a id="top"></a>
- <h1>Component Lifecycle Hooks</h1>
- <a href="#hooks">Peek-a-boo: (must) lifecycle hooks</a><br>
- <a href="#onchanges">OnChanges</a><br>
- <a href="#docheck">Docheck</a><br>
- <a href="#after-view">AfterViewInit & AfterViewChecked</a><br>
- <a href="#after-content">AfterContentInit & AfterContentChecked</a><br>
- <a href="#spy">Spy: directive with OnInit & OnDestory</a><br>
- <a href="#counter">Counter: OnChanges + Spy directive</a><br>
+<a id="toc"></a>
+<h1>Pipes</h1>
+<a href="#happy-birthday1">Happy Birthday v1</a><br>
+<a href="#birthday-date-pipe">Birthday DatePipe</a><br>
+<a href="#happy-birthday2">Happy Birthday v2</a><br>
+<a href="#birthday-pipe-chaining">Birthday Pipe Chaining</a><br>
+<a href="#power-booster">Power Booster custom pipe</a><br>
+<a href="#power-boost-calc">Power Boost Calculator custom pipe with params</a><br>
+<a href="#flying-heroes">Flying Heroes filter pipe (pure)</a><br>
+<a href="#flying-heroes-impure">Flying Heroes filter pipe (impure)</a><br>
+<a href="#hero-message">Async Hero Message and AsyncPipe</a><br>
+<a href="#hero-list">Hero List with caching FetchJsonPipe</a><br>
 
- <a id="hooks"></a>
- <peek-a-boo-parent></peek-a-boo-parent>
- <a href="#top">back to top</a>
 
- <a id="spy"></a>
- <spy-parent></spy-parent>
- <a href="#top">back to top</a>
+<hr>
+<a id="happy-birthday1"></a>
+<h2>Hero Birthday v1</h2>
+<app-hero-birthday></app-hero-birthday>
 
- <a id="onchanges"></a>
- <on-changes-parent></on-changes-parent>
- <a href="#top">back to top</a>
- 
- <a id="docheck"></a>
- <do-check-parent></do-check-parent>
- <a href="#top">back to top</a>
+<hr>
+<a id="birthday-date-pipe"></a>
+<h2>Birthday DatePipe</h2>
+<p>The hero's birthday is {{ birthday | date }}</p>
 
- <a id="after-view"></a>
- <after-view-parent></after-view-parent>
- <a href="#top">back to top</a>
+<p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>
 
- <a id="after-content"></a>
- <after-content-parent></after-content-parent>
- <a href="#top">back to top</a>
+<hr>
+<a id="happy-birthday2"></a>
+<h2>Hero Birthday v2</h2>
+<app-hero-birthday2></app-hero-birthday2>
 
- <a id="counter"></a>
- <counter-parent></counter-parent>
- <a href="#top">back to top</a>
+<hr>
+<a id="birthday-pipe-chaining"></a>
+<h2>Birthday Pipe Chaining</h2>
+<p>
+  The chained hero's birthday is
+  {{ birthday | date | uppercase}}
+</p>
+
+<p>
+  The chained hero's birthday is
+  {{  birthday | date:'fullDate' | uppercase}}
+</p>
+<p>
+  The chained hero's birthday is
+  {{ ( birthday | date:'fullDate' ) | uppercase}}
+</p>
+<hr>
+<a id="power-booster"></a>
+<app-power-booster></app-power-booster>
+
+<hr>
+<a id="power-boost-calc"></a>
+<app-power-boost-calculator>loading</app-power-boost-calculator>
+
+<hr>
+<a id="flying-heroes"></a>
+<app-flying-heroes></app-flying-heroes>
+
+<hr>
+<a id="flying-heroes-impure"></a>
+<app-flying-heroes-impure></app-flying-heroes-impure>
+
+<hr>
+<a id="hero-message"></a>
+<!-- async examples at the top so can see them in action -->
+<app-hero-message></app-hero-message>
+
+<hr>
+<a id="hero-list"></a>
+<app-hero-list></app-hero-list>
+
+<div style="margin-top:12em;"></div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
