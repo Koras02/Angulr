@@ -1,8 +1,8 @@
-import { AfterViewCheckd, AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { LoggerService } from './logger.service';
 
-/////////////
+//////////////////
 @Component({
   selector: 'app-child-view',
   template: '<input [(ngModel)]="hero">'
@@ -11,39 +11,39 @@ export class ChildViewComponent {
   hero = 'Magneta';
 }
 
-/////////////////
-@Component({ 
+//////////////////////
+@Component({
   selector: 'after-view',
   template: `
     <div>-- child view begins --</div>
       <app-child-view></app-child-view>
     <div>-- child view ends --</div>`
-    + `
-    <p *ngIf="comment" class="comment"> 
+   + `
+    <p *ngIf="comment" class="comment">
       {{comment}}
     </p>
   `
 })
-export class AfterViewComponent implements AfterViewChecked, AfterViewInit {
+export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
   comment = '';
   private prevHero = '';
-  
-  // `ChildViewComponent` 타입의 뷰 자식 컴포넌트를 참조.
+
+  // `ChildViewComponent` 타입의 뷰 자식 컴포넌트를 참조합니다.
   @ViewChild(ChildViewComponent) viewChild: ChildViewComponent;
 
   constructor(private logger: LoggerService) {
-    this.logIt('AfterVIew constructor');
+    this.logIt('AfterView constructor');
   }
 
-  ngAfterViewInit () {
+  ngAfterViewInit() {
     // viewChild는 뷰가 모두 초기화된 이후에 값이 할당됩니다.
     this.logIt('AfterViewInit');
     this.doSomething();
   }
 
   ngAfterViewChecked() {
-    // 뷰에서 변화감지 로직이 동작하면 viewchild가 갱신됩니다.
-    if (this.prevHero == this.viewChild.hero) {
+    // 뷰에서 변화감지 로직이 동작하면 viewChild가 갱신됩니다.
+    if (this.prevHero === this.viewChild.hero) {
       this.logIt('AfterViewChecked (no change)');
     } else {
       this.prevHero = this.viewChild.hero;
@@ -51,7 +51,7 @@ export class AfterViewComponent implements AfterViewChecked, AfterViewInit {
       this.doSomething();
     }
   }
-  
+
   // 동작을 확인하기 위해 `comment` 값을 변경해 봅니다.
   private doSomething() {
     const c = this.viewChild.hero.length > 10 ? `That's a long name` : '';
@@ -61,17 +61,17 @@ export class AfterViewComponent implements AfterViewChecked, AfterViewInit {
     }
   }
 
-  private logIt(method: string ) {
+  private logIt(method: string) {
     const child = this.viewChild;
-    const message = `${method}; ${child ? child.hero : 'no'} child view`;
+    const message = `${method}: ${child ? child.hero : 'no'} child view`;
     this.logger.log(message);
   }
-  // ...     
+  // ...
 }
 
-////////////
+//////////////
 @Component({
-  selector: 'after-view-parent', 
+  selector: 'after-view-parent',
   template: `
   <div class="parent">
     <h2>AfterView</h2>
@@ -86,16 +86,23 @@ export class AfterViewComponent implements AfterViewChecked, AfterViewInit {
   styles: ['.parent {background: burlywood}'],
   providers: [LoggerService]
 })
-export class AfterViewparentComponent { 
+export class AfterViewParentComponent {
   show = true;
 
   constructor(public logger: LoggerService) {
   }
 
-  reset () {
+  reset() {
     this.logger.clear();
-    // quickly remove and reload AfterViewComponent which recreatesit 
+    // quickly remove and reload AfterViewComponent which recreates it
     this.show = false;
     this.logger.tick_then(() => this.show = true);
   }
 }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

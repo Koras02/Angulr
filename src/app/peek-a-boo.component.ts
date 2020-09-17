@@ -1,8 +1,8 @@
 // tslint:disable: no-conflicting-lifecycle
 import {
-  AfterContentCheckd,
+  AfterContentChecked,
   AfterContentInit,
-  AfterViewCheckd, 
+  AfterViewChecked, 
   AfterViewInit,
   Directive,
   DoCheck,
@@ -37,7 +37,7 @@ export class PeekABooDirective implements OnInit {
 // unless we want typing and tool support.
 export class PeekABooComponent extends PeekABooDirective implements 
              OnChanges, OnInit, DoCheck,
-             AfterContentInit, AfterContentCheckd,
+             AfterContentInit, AfterContentChecked,
              AfterViewInit, AfterViewChecked,
              OnDestroy {
    @Input() name: string;

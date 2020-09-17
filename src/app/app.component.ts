@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent { 
-  birthday = new Date(1988, 3, 15); // Aprill 15, 1988 -- since month parameter is zero-based
-}
+export class AppComponent { }
