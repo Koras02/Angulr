@@ -1,44 +1,52 @@
-<a id="top"></a>
-<h1>Component Lifecycle Hooks</h1>
-<a href="#hooks">Peek-a-boo: (most) lifecycle hooks</a><br>
-<a href="#onchanges">OnChanges</a><br>
-<a href="#docheck">DoCheck</a><br>
-<a href="#after-view">AfterViewInit & AfterViewChecked</a><br>
-<a href="#after-content">AfterContentInit & AfterContentChecked</a><br>
-<a href="#spy">Spy: directive with OnInit & OnDestroy</a><br>
-<a href="#counter">Counter: OnChanges + Spy directive</a><br>
+<h1 id="top">Component Communication Cookbook</h1>
 
-<a id="hooks"></a>
-<peek-a-boo-parent></peek-a-boo-parent>
-<a href="#top">back to top</a>
+<a href="#parent-to-child">Pass data from parent to child with input binding ("Heroes")</a><br/>
+<a href="#parent-to-child-setter">Intercept input property changes with a setter ("Master")</a><br/>
+<a href="#parent-to-child-changes">Intercept input property changes with <i>ngOnChanges</i> ("Source code version")</a><br/>
+<a href="#child-to-parent">Parent listens for child event ("Colanize Universe")</a><br/>
+<a href="#parent-to-child-local-var">Parent to child via <i>local variable</i>("Countdown to Liftoff")</a><br/>
+<a href="#parent-to-view-child">Parent to child via <i>local variable</i>("Countdown to Liftoff")</a><br/>
+<a href="#bidirectional-service">Parent and children communicate via a service ("Mission Control")</a><br/>
 
-<a id="spy"></a>
-<spy-parent></spy-parent>
-<a href="#top">back to top</a>
+<div id="parent-to-child">
+  <app-hero-parent></app-hero-parent>
+</div>
+<a href="#top" class="to-top">Back to top</a>
 
-<a id="onchanges"></a>
-<on-changes-parent></on-changes-parent>
-<a href="#top">back to top</a>
-
-<a id="docheck"></a>
-<do-check-parent></do-check-parent>
-<a href="#top">back to top</a>
-
-<a id="after-view"></a>
-<after-view-parent></after-view-parent>
-<a href="#top">back to top</a>
-
-<a id="after-content"></a>
-<after-content-parent></after-content-parent>
-<a href="#top">back to top</a>
-
-<a id="counter"></a>
-<counter-parent></counter-parent>
-<a href="#top">back to top</a>
+<hr>
+<div id="parent-to-child-setter">
+  <app-name-parent></app-name-parent>
+</div>
+<a href="#top" class="to-top">Back to Top</a>
 
 
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
+<hr>
+<div id="parent-to-child-on-changes">
+    <app-version-parent></app-version-parent>
+</div>
+<a href="#top" calss="to-top">Back to top</a>
+
+ <hr>
+<div id="child-to-parent">
+    <app-vote-taker></app-vote-taker>
+</div>
+<a href="#top" class="to-top">Back to top</a>
+<hr>
+
+<div id="parent-to-child-local-var">
+    <app-countdown-parent-1v></app-countdown-parent-1v>
+</div>
+<a href="#top" class="to-top">Back to top</a>
+<hr>
+
+<div id="parent-to-view-child"> 
+  <app-countdown-parent-vc></app-countdown-parent-vc>
+</div>
+<a href="#top" class="to-top">Back to top</a>
+<hr>
+
+<div id="bidirectional-service">
+    <app-mission-control></app-mission-control>
+</div>
+<a href="#top" class="to-top">Back to top</a>
+<hr>

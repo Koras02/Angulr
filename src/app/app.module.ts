@@ -1,72 +1,55 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { AstronautComponent } from './astronaut.component';
+import { CountdownLocalVarParentComponent, CountdownViewChildParentComponent } from './countdown-parent.component';
+import { CountdownTimerComponent } from './countdown-timer.component';
+import { HeroChildComponent } from './Hero-child.component';
+import { HeroParentComponent } from './Hero-parent.component';
+import { MissionControlComponent } from './missioncontrol.component';
+import { NameChildComponent} from './name-child.component';
+import { NameParentComponent } from './name-parent.component';
+import { VersionChildComponent } from './version-child.component';
+import { VersionParentComponent } from './version-parent.component'; 
+import { VoterComponent } from './voter.component';
+import { VoteTakerComponent } from './votetaker.component';
 
-import { 
-  AfterContentParentComponent,
-  AfterContentComponent,
-  ChildComponent
-} from './after-content.component';
+const directives : any [] = [
+    AppComponent,
+    AstronautComponent,
+    CountdownTimerComponent,
+    HeroChildComponent,
+    HeroParentComponent,
+    MissionControlComponent,
+    NameChildComponent,
+    HeroChildComponent, 
+    NameChildComponent,
+    VersionChildComponent,
+    VersionParentComponent,
+    VoterComponent,
+    VoteTakerComponent
+];
 
-import {
-  AfterViewParentComponent,
-  AfterViewComponent,
-  ChildViewComponent,
-} from './after-view.component';
+const schemas: any[] = [];
 
-import {
-  CounterParentComponent,
-  MyCounterComponent
-} from './counter.component';
-
-import {
-  DoCheckParentComponent,
-  DoCheckComponent
-} from './do-check.component'; 
-
-import { 
-  OnChangesParentComponent,
-  OnChangesComponent
-} from './on-changes.component';
-
-import { PeekABooParentComponent } from './peek-a-boo-parent.component';
-import { PeekABooComponent } from './peek-a-boo.component';
- 
-import { SpyParentComponent } from './spy.component';
-import { SpyDirective } from './spy.directive';
+// Include Countdown examples
+// unless in e2e tests which they break.
+if (!/e2e/.test(location.search)) {
+  console.log('adding countdown timer examples');
+  directives.push(CountdownLocalVarParentComponent);
+  directives.push(CountdownViewChildParentComponent);
+} else {
+  // in e2e test use CUSTOM_ELEMENTS_SCHEMA to suppress unknown element errors
+  schemas.push(CUSTOM_ELEMENTS_SCHEMA);
+}
 
 @NgModule({
-  imports: [ 
-    BrowserModule,
-    FormsModule
+  imports: [
+    BrowserModule
   ],
-  declarations: [
-    AppComponent,
-    AfterContentParentComponent,
-    AfterContentComponent,
-    ChildComponent,
-    AfterViewParentComponent,
-    AfterViewComponent,
-    ChildViewComponent,
-    CounterParentComponent,
-    MyCounterComponent,
-    DoCheckParentComponent,
-    DoCheckComponent,
-    OnChangesParentComponent,
-    OnChangesComponent,
-    PeekABooParentComponent,
-    PeekABooComponent,
-    SpyParentComponent,
-    SpyDirective
-  ],
-  bootstrap: [ AppComponent ]
+  declarations: directives,
+  bootstrap: [ AppComponent ],
+  schemas 
 })
-export class AppModule { }
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+export class AppModule {  }
