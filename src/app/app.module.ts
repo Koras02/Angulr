@@ -5,17 +5,17 @@ import { AppComponent } from './app.component';
 import { AstronautComponent } from './astronaut.component';
 import { CountdownLocalVarParentComponent, CountdownViewChildParentComponent } from './countdown-parent.component';
 import { CountdownTimerComponent } from './countdown-timer.component';
-import { HeroChildComponent } from './Hero-child.component';
-import { HeroParentComponent } from './Hero-parent.component';
+import { HeroChildComponent } from './hero-child.component';
+import { HeroParentComponent } from './hero-parent.component';
 import { MissionControlComponent } from './missioncontrol.component';
-import { NameChildComponent} from './name-child.component';
+import { NameChildComponent } from './name-child.component';
 import { NameParentComponent } from './name-parent.component';
 import { VersionChildComponent } from './version-child.component';
-import { VersionParentComponent } from './version-parent.component'; 
+import { VersionParentComponent } from './version-parent.component';
 import { VoterComponent } from './voter.component';
 import { VoteTakerComponent } from './votetaker.component';
 
-const directives : any [] = [
+const directives: any[] = [
     AppComponent,
     AstronautComponent,
     CountdownTimerComponent,
@@ -23,13 +23,12 @@ const directives : any [] = [
     HeroParentComponent,
     MissionControlComponent,
     NameChildComponent,
-    HeroChildComponent, 
-    NameChildComponent,
+    NameParentComponent,
     VersionChildComponent,
     VersionParentComponent,
     VoterComponent,
     VoteTakerComponent
-];
+  ];
 
 const schemas: any[] = [];
 
@@ -40,7 +39,7 @@ if (!/e2e/.test(location.search)) {
   directives.push(CountdownLocalVarParentComponent);
   directives.push(CountdownViewChildParentComponent);
 } else {
-  // in e2e test use CUSTOM_ELEMENTS_SCHEMA to suppress unknown element errors
+  // In e2e test use CUSTOM_ELEMENTS_SCHEMA to suppress unknown element errors
   schemas.push(CUSTOM_ELEMENTS_SCHEMA);
 }
 
@@ -50,6 +49,13 @@ if (!/e2e/.test(location.search)) {
   ],
   declarations: directives,
   bootstrap: [ AppComponent ],
-  schemas 
+  schemas
 })
-export class AppModule {  }
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

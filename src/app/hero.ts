@@ -1,9 +1,9 @@
-export interface Hero { 
+export interface Hero {
   name: string;
 }
 
 export const HEROES = [
-  { name: 'DR IQ'},
-  { name: 'Magneta'},
-  { name: 'Bombasto'}
+  {name: 'Dr IQ'},
+  {name: 'Magneta'},
+  {name: 'Bombasto'}
 ];

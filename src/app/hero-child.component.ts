@@ -9,7 +9,7 @@ import { Hero } from './hero';
     <p>I, {{hero.name}}, am at your service, {{masterName}}.</p>
   `
 })
-export class HeroChildComponent { 
+export class HeroChildComponent {
   @Input() hero: Hero;
-  @Input('master') masterName: string;
+  @Input('master') masterName: string; // tslint:disable-line: no-input-rename
 }
