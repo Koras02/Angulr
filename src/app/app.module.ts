@@ -1,24 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component'; 
-import { HeroJobAdComponent } from './hero-job-ad.component';
-import { AdBannerComponent } from './ad-banner.component';
-import { HeroProfileComponent } from './hero-profile.component';
-import { AdDirective } from './ad.directive';
-import { AdService } from './ad.service'; 
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AppComponent } from './app.component';
+import { PopupComponent } from './popup.component';
+import { PopupService } from './popup.service';
+
+// Include the `PopupService` provider,
+// but exclude `PopupComponent` from compilation,
+// because it will be added dynamically.
 
 @NgModule({
-   imports: [ BrowserModule ],
-   providers: [AdService],
-   declarations: [ AppComponent,
-                   AdBannerComponent,
-                   HeroJobAdComponent,
-                   HeroProfileComponent,
-                   AdDirective ],
-   entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
-   bootstrap: [ AppComponent ] 
+  imports: [BrowserModule, BrowserAnimationsModule],
+  providers: [PopupService],
+  declarations: [AppComponent, PopupComponent],
+  bootstrap: [AppComponent],
+  entryComponents: [PopupComponent],
 })
-export class AppModule { 
-  constructor() {}
+export class AppModule {
 }
-  
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { PopupService } from './popup.service';
+import { PopupComponent } from './popup.component';
 
-import { AdService } from './ad.service';
-import { AdItem } from './ad-item';
-
-@Component({ 
-   selector: 'app-root', 
-   template: `
-     <div>
-       <app-ad-banner [ads]="ads"></app-ad-banner>
-     </div>
-   `
+@Component({
+  selector: 'app-root',
+  template: `
+    <input #input value="Message">
+    <button (click)="popup.showAsComponent(input.value)">Show as component</button>
+    <button (click)="popup.showAsElement(input.value)">Show as element</button>
+  `,
 })
-export class AppComponent implements OnInit {
-  ads: AdItem[];
-  
-  constructor(private adService: AdService) {}
+export class AppComponent {
+  constructor(injector: Injector, public popup: PopupService) {
+    // Convert `PopupComponent` to a custom element.
+    const PopupElement = createCustomElement(PopupComponent, {injector});
+    // Register the custom element with the browser.
+    customElements.define('popup-element', PopupElement);
+  }
+}
 
-  ngOnInit() {
-    this.ads = this.adService.getAds();
-  }
-  }
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
