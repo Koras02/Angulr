@@ -1,9 +1,7 @@
-export interface Hero {
-  name: string;
-}
+export class Hero { 
+  active: boolean;
 
-export const HEROES = [
-  {name: 'Dr IQ'},
-  {name: 'Magneta'},
-  {name: 'Bombasto'}
-];
+  constructor(public name: string,
+              public team: string[]) { 
+  }
+}
