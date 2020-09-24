@@ -1,59 +1,53 @@
-<h1 id="top">Component Communication Cookbook</h1>
 
-<a href="#parent-to-child">Pass data from parent to child with input binding ("Heroes")</a><br/>
-<a href="#parent-to-child-setter">Intercept input property changes with a setter ("Master")</a><br/>
-<a href="#parent-to-child-on-changes">Intercept input property changes with <i>ngOnChanges</i> ("Source code
-	version")</a><br/>
-<a href="#child-to-parent">Parent listens for child event ("Colonize Universe")</a><br/>
-<a href="#parent-to-child-local-var">Parent to child via <i>local variable</i>("Countdown to Liftoff")</a><br/>
-<a href="#parent-to-view-child">Parent calls <i>ViewChild</i>("Countdown to Liftoff")</a><br/>
-<a href="#bidirectional-service">Parent and children communicate via a service ("Mission Control")</a><br/>
-
-<div id="parent-to-child">
-	<app-hero-parent></app-hero-parent>
-</div>
-<a href="#top" class="to-top">Back to Top</a>
-
-<hr>
-<div id="parent-to-child-setter">
-	<app-name-parent></app-name-parent>
-</div>
-<a href="#top" class="to-top">Back to Top</a>
-
-<hr>
-<div id="parent-to-child-on-changes">
-	<app-version-parent></app-version-parent>
-</div>
-<a href="#top" class="to-top">Back to Top</a>
-
-<hr>
-<div id="child-to-parent">
-	<app-vote-taker></app-vote-taker>
-</div>
-<a href="#top" class="to-top">Back to Top</a>
-<hr>
-
-<div id="parent-to-child-local-var">
-	<app-countdown-parent-lv></app-countdown-parent-lv>
-</div>
-<a href="#top" class="to-top">Back to Top</a>
-<hr>
-
-<div id="parent-to-view-child">
-	<app-countdown-parent-vc></app-countdown-parent-vc>
-</div>
-<a href="#top" class="to-top">Back to Top</a>
-<hr>
-
-<div id="bidirectional-service">
-	<app-mission-control></app-mission-control>
-</div>
-<a href="#top" class="to-top">Back to Top</a>
-<hr>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
+<div>
+    <h1>Interpolation and Template Expressions</h1>
+    <hr />
+  
+    <div>
+      <h2>Interpolation</h2>
+      <h3>Current customer: {{ currentCustomer }}</h3>
+  
+      <p>{{title}}</p>
+      <div><img src="{{itemImageUrl}}"></div>
+  
+      <h3>Evaluating template expressions </h3>
+      <h4>Simple evaluation (to a string):</h4>
+      <!-- "The sum of 1 + 1 is 2" -->
+      <p>The sum of 1 + 1 is {{1 + 1}}.</p>
+  
+      <h4>Evaluates using a method (also evaluates to a string):</h4>
+      <!-- "The sum of 1 + 1 is not 4" -->
+      <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
+    </div>
+  
+    <hr />
+  <h2>Expression Context</h2>
+  
+  <div>
+    <h3>Component context, properties of app.component.ts:</h3>
+    <h4>{{recommended}}</h4>
+    <img [src]="itemImageUrl2">
+  </div>
+  
+  <div>
+    <h4>Template context, template input variables (let customer):</h4>
+    <ul>
+      <li *ngFor="let customer of customers">{{customer.name}}</li>
+    </ul>
+  </div>
+  
+  <div (keyup)="0">
+    <h4>Template context: template reference variables (#customerInput):</h4>
+    <label>Type something:
+      <input #customerInput>{{customerInput.value}}
+    </label>
+  </div>
+  
+  </div>
+  
+  
+  <!-- 
+  Copyright Google LLC. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at http://angular.io/license
+  -->

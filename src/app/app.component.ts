@@ -1,23 +1,27 @@
-import { Component, Injector } from '@angular/core';
-import { createCustomElement } from '@angular/elements';
-import { PopupService } from './popup.service';
-import { PopupComponent } from './popup.component';
+import { Component } from '@angular/core';
+
+import { CUSTOMERS } from './customers';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <input #input value="Message">
-    <button (click)="popup.showAsComponent(input.value)">Show as component</button>
-    <button (click)="popup.showAsElement(input.value)">Show as element</button>
-  `,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(injector: Injector, public popup: PopupService) {
-    // Convert `PopupComponent` to a custom element.
-    const PopupElement = createCustomElement(PopupComponent, {injector});
-    // Register the custom element with the browser.
-    customElements.define('popup-element', PopupElement);
-  }
+  customers = CUSTOMERS;
+
+  currentCustomer = 'Maria';
+  title = 'Featured product:';
+  itemImageUrl = '../assets/potted-plant.png';
+
+  recommended = 'You might also like:';
+  itemImageUrl2 = '../assets/lamp.png';
+
+
+
+  getVal(): number { return 2; }
+
+
 }
 
 
