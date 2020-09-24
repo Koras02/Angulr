@@ -1,53 +1,241 @@
-
-<div>
-    <h1>Interpolation and Template Expressions</h1>
-    <hr />
-  
-    <div>
-      <h2>Interpolation</h2>
-      <h3>Current customer: {{ currentCustomer }}</h3>
-  
-      <p>{{title}}</p>
-      <div><img src="{{itemImageUrl}}"></div>
-  
-      <h3>Evaluating template expressions </h3>
-      <h4>Simple evaluation (to a string):</h4>
-      <!-- "The sum of 1 + 1 is 2" -->
-      <p>The sum of 1 + 1 is {{1 + 1}}.</p>
-  
-      <h4>Evaluates using a method (also evaluates to a string):</h4>
-      <!-- "The sum of 1 + 1 is not 4" -->
-      <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
+<a id="toc"></a>
+<h1>Template Syntax</h1>
+<a href="#interpolation">Interpolation</a><br>
+<a href="#expression-context">Expression context</a><br> 
+<a href="#statement-context">Statment contxt</a><br>
+<a href="#mental-model">Mental Model</a><br>    
+<a href="#buttons">Buttons</a><br>
+<a href="#prop-vs-attrib">Properties vs. Attributes</a><br>
+<br>
+<a href="#property-binding">Property Binding</a><br>
+<div stlye="margin-left:8px">
+    <a href="#attribute-binding">Attribute Binding</a><br>
+    <a href="#class-binding">Class Binding</a><br>
+    <a href="#style-binding">Style Binding</a><br>
+</div>
+<br>
+<a href="#event-binding">Evenet Binding</a>
+<a href="#two-way">Two-way Binding</a><br>
+<br>
+<div>Directives</div>
+<div stlye="margin-left:8px">
+    <a href="#ngModel">Ngmodel (two-way) Binding</a><br>
+    <a href="#ngClass">NgClass Binding</a><br>
+    <a href="#ngStyle">NgStyle Binding</a><br>
+    <a href="#ngIf">NgIf</a><br>
+    <a href="#ngFor">NgFor</a><br>
+    <div style="margin-left:8px">
+       <a href="#ngFor-index">NgFor with index</a><br>
+       <a href="#ngFor-trackBy">NgFor With trackBy</a><br>
     </div>
-  
-    <hr />
-  <h2>Expression Context</h2>
-  
-  <div>
-    <h3>Component context, properties of app.component.ts:</h3>
-    <h4>{{recommended}}</h4>
-    <img [src]="itemImageUrl2">
-  </div>
-  
-  <div>
-    <h4>Template context, template input variables (let customer):</h4>
-    <ul>
-      <li *ngFor="let customer of customers">{{customer.name}}</li>
-    </ul>
-  </div>
-  
-  <div (keyup)="0">
-    <h4>Template context: template reference variables (#customerInput):</h4>
-    <label>Type something:
-      <input #customerInput>{{customerInput.value}}
-    </label>
-  </div>
-  
-  </div>
-  
-  
-  <!-- 
-  Copyright Google LLC. All Rights Reserved.
-  Use of this source code is governed by an MIT-style license that
-  can be found in the LICENSE file at http://angular.io/license
-  -->
+    <a href="#ngSwich">NgSwitch</a><br>
+</div>
+<br>
+<a href="#ref-vars">Template reference variables</a><br>
+<a href="#inputs-and-outputs">Inputs and outputs</a><br>
+<a href="#pipes">Pipes</a>
+<a href="#safe-navigation-operator">Safe navigation operator <i>?</i></a><br>
+<a href="#non-null-assertion-operator">Non-null assertion operator<i>!.</i></a><br>
+<a href="#enums">Enums</a><br>
+<a href="#svg-templates">SVG Templates</a><br>
+
+<!-- Interpolation and expressions -->
+<hr><h2 id="interpolation">Interpolation</h2>
+
+<p>My current hero is {{currentHero.name}}</p>
+
+<h3>
+    {{title}}
+    <img src="{{heroImageUrl}}" style="height:30px">
+</h3>
+
+<!-- "The sum of 1 + 1 is 2" -->
+<p>The sum of 1 + 1 is {{ 1 + 1}}</p>
+
+<!-- "The sum of 1 + 1 is not 4" -->
+<p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}</p>
+
+<a class="to-toc" href="#toc">top</a>
+
+<hr><h2 id="expression-context">Expression context</h2>
+
+<p>Component expression context (&#123;&#123;title&#125;&#125;,[hidden]="isUnchanged")</p>
+<div class="context">
+    {{title}}
+    <span [hidden]="isUnchanged">changed</span>
+</div>
+
+
+<p>Template input variable expression context (let hero)</p>
+<!-- template hides the following; plenty of examples later -->
+<ng-template>
+     <div *ngFor="let hero of heroes">{{hero.name}}</div>
+</ng-template>
+
+<p>Template reference variable expression context (#herpInput)</p>
+<div (keyup)="0" class="context">
+    Type something;
+    <input #heroInput>  {{heroInput.value}}
+</div>
+
+<a class="to-toc" href="toc">top</a>
+
+<hr><h2 id="statement-context">Statement context</h2>
+
+<p>Component statement context ( (click)="onSave() ) 
+<divc class="context">
+    <button (click)="deleteHero()">Delete hero</button>
+</div>
+
+<p>Template $event statement context</p>
+<div class="context">
+    <button (click)="onSave($event)">Save</button>
+</div>
+
+<p>Template input variable statment context (let hero)</p>
+<!-- template hides the following; plenty of examples later  -->
+<div class="context">
+    <button *ngFor="let hero of heroes" (click)="deleteHero(hero)">{{hero.name}}</button>
+</div>
+
+<p>Template reference variable statement context (#heroForm)</p>
+<div class="context">
+    <form #heroForm (ngSubmit)="onSubmit(heroForm)">...</form>
+</div>
+
+<a class="to-toc" href="#toc">top</a>
+
+<!-- New Mental Model -->
+<hr><h2 id="mental-model">New Mental Model</h2>
+
+<div class="special">Mental Model</div>
+<img src="assets/images/hero.png">
+<button disabled>Save</button>
+<br><br>
+
+<div> 
+    <!-- 일반 HTML -->
+    <div class="special">Mental Model</div>
+    <!-- 와우! 새로운 엘리먼트를 사용할 수 있습니다!  -->
+    <app-hero-detal></app-hero-detal>
+</div>
+ <br><br>
+
+ <div>
+    <!-- `isUnchanged` 프로펕로 disabled 스테이트를 바인딩합니다. -->
+    <button [disabled]="isUnchanged">Save</button>
+ </div>
+ <br><br>
+
+ <div>
+     <img [src]="heroImageUrl">
+     <app-hero-detail [hero]="currentHero"></app-hero-detail>
+     <div [ngClass]="{'special: isSpecial}"></div>
+ </div>
+ <br><br>
+
+ <button (click)="onSave()">Save</button>
+ <app-hero-detail (deleteRequest)="deleteHero()"></app-hero-detail>
+ <div (myClick)="clicked=$event" clickable>click me</div>
+ {{clicked}}
+ <br><br>
+
+ <div>
+    Hero Name: 
+    <input [(ngModel)]="name">
+    {{name}}
+ </div>
+ <br><br>
+
+ <button [attr.aria-label]="help">help</button>
+ <br><br>
+
+ <div [class.special]="isSpecial">Special</div>
+ <br><br>
+
+ <button [style.color]="isSpecial ? 'red' : 'green' ">
+ button</button>
+
+ <a class="to-toc" href="#toc">top</a>
+
+ <!-- property vs. attribute -->
+ <hr><h2 id="prop-vs-attrib">Property vs. Attribute (img examples)</h2>
+ <!-- examine the following <img> tag in the browser tools -->
+ <img src="images/ng-logo.png"
+      [src]="heroImageUrl">
+
+<br><br>
+
+<img [src]="iconUrl"/>
+<img bind-src="heroImageUrl"/>
+<img [attr.src]="villainImageUrl"/>
+
+<a class="to-toc" href="#toc">top</a>
+
+<!-- buttons -->
+<hr><h2 id="buttons">Buttons</h2>
+
+<button>Enabled (but does nothing)</button>
+<button disabled>Disabled</button>
+<button disabled=false>Still disabled</button>
+<br><br>
+<button disabled>disabled by attribute</button>
+<button [disabled]="isUnchanged">disabled by property binding</button>
+<br><br>
+<button bind-disabled="isUnchanged" on-click="onSave($event)">Disabled Cancel</button>
+<button [disabled]="!canSave" (click)="onSave($event)">Enabled Save</button>
+
+<a class="to-toc" href="#toc">top</a>
+
+<!-- property binding -->
+<hr><h2 id="property-binding">Property Binding</h2>
+
+<img [src]="heroImageUrl"> 
+<button [disabled]="isUnchanged">Cancel is disabled</button>
+<div [ngClass]="classes">[ngClass] binding to the classes property</div>
+<app-hero-detail [hero]="currentHero"></app-hero-detail>
+<img bind-src="heroImageUrl">
+
+<!-- 에러: HeroDetailComponen.hero에는 Hero 객체를 바인딩해야 합니다.
+    하지만 괄호가 없으면 "currentHero"는 문자열일 뿐입니다.-->
+    <div *ngIf="false">
+        <app-hero-detail hero="currentHero"></app-hero-detail>
+    </div>
+    <app-hero-detail prefix="You are my" [hero]="currentHero"></app-hero-detail>
+
+    <p><img src="{{heroImageUrl}}">is the <i>interpolated</i> image.</p>
+    <p><img [src]="heroImageUrl">   is the <i>property bound</i> image.</p>
+
+    <p><span>"{{title}}" is the <i>interpolated</i>title.</span></p>
+    <p>"<span [innerHTML]="title"></span>" is the <i>property bound</i> title.</p>
+
+    <!--
+        이 두줄은 Angular에서 경고 메세지를 출력합니다
+        경고: 위험한 HTML 요소는 Angular가 무효화 시킵니다  (http://g.co/ng/security#xss) 를 참고하세요
+    -->
+    <p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>
+    <p>"<span [innerHTML]="evilTitle"></span>"is the <i>property bound</i> evil title.</p>
+
+    <a class="to-toc" href="#toc">top</a>
+
+    <!-- attribute binding -->
+    <hr><h2 id="attribute-binding">Attribute Binding</h2>
+
+    <!-- create and set a colspan attribute -->
+    <table boder=1>
+        <!-- 표현식이 실행된 결과는 colspan=2 입니다 -->
+        <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>
+      
+        <!--  ERROR: 엘리먼트에는 `colspan` 프로퍼티가 없습니다!
+         <tr><td colspan="{{1 + 1}}">Three-Four</td></tr>
+         -->
+
+         <tr><td>Five</td><td>Six</td></tr>
+    </table>
+
+    <br>
+    <!-- 웹 접근성을 위해 aria 어트리뷰트를 지정합니다. -->
+    <button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+    <br><br>
+
+    
