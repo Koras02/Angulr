@@ -1,40 +1,40 @@
-/* tslint:disable use-input-property-decorator use-output-property-decorator */
+// tslint:disable use-input-property-decorator use-output-property-decorator 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Hero } from './hero';
 
 @Component({
   selector: 'app-hero-detail',
-  // tslint:disable: no-inputs-metadata-property no-outputs-metadata-property
+  // tslint:disable: no-inputs-metadata-property no-outputs-metadata-property 
   inputs: ['hero'],
   outputs: ['deleteRequest'],
-  // tslint:enable: no-inputs-metadata-property no-outputs-metadata-property
-  styles: ['button {margin-left: 8px} div {margin: 8px 0} img {height:24px}'],
-  template: `
-  <div>
-    <img src="{{heroImageUrl}}">
-    <span [style.text-decoration]="lineThrough">
-      {{prefix}} {{hero?.name}}
+ // tslint: enable: no-inputs-meta-property no-outputs-metadata-property
+ styles: ['button {margin-left: 8px} div {margin: 8px 0} img {height:24px}'], 
+ template: `
+ <div> 
+  <img src="{{heroImageUrl}}">
+  <span [style.text-decoration]="lineThrough">
+    {{prefix}} {{hero?.name}}
     </span>
     <button (click)="delete()">Delete</button>
-  </div>`
+ </div>`
 })
-export class HeroDetailComponent {
-  hero: Hero = new Hero(-1, '', 'Zzzzzzzz'); // default sleeping hero
-  // heroImageUrl = 'http://www.wpclipart.com/cartoon/people/hero/hero_silhoutte_T.png';
-  // Public Domain terms of use: http://www.wpclipart.com/terms.html
-  heroImageUrl = 'assets/images/hero.png';
-  lineThrough = '';
-  @Input() prefix = '';
-
-  // 이 컴포넌트는 삭제 요청을 보내기만 하고, 실제 삭제 동작을 수행하지는 않습니다.
-  deleteRequest = new EventEmitter<Hero>();
-
+export class HeroDetailComponent { 
+  hero: Hero = new Hero(-1, '', 'Zzzzzzzz'); 
+ // heroImageUrl = 'http://www.wpclipart.com/cartoon/people/hero/hero_silhoutte_T.png';
+ // public Domain terms of use: http://www.wpclipart.com/terms.html
+ heroImageUrl = 'assets/images/hero.png';
+ lineThrough = '';
+ @Input() prefix = ''; 
+ 
+ // 이 컴포넌트는 삭제 요청을 보내기만 하고, 실제 삭제동작을 수행하지는 않습니다.
+ deleteRequest = new EventEmitter<Hero>();
+ 
   delete() {
     this.deleteRequest.emit(this.hero);
     this.lineThrough = this.lineThrough ? '' : 'line-through';
   }
-}
+} 
 
 @Component({
   selector: 'app-big-hero-detail',
@@ -58,17 +58,10 @@ export class HeroDetailComponent {
 })
 export class BigHeroDetailComponent extends HeroDetailComponent {
 
-  @Input()  hero: Hero;
+  @Input()  hero: Hero; 
   @Output() deleteRequest = new EventEmitter<Hero>();
 
   delete() {
     this.deleteRequest.emit(this.hero);
   }
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
