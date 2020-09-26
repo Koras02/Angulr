@@ -1,45 +1,60 @@
 
-<div> 
-    <h1>Binding syntax</h1>
+
+<div>
+    <h1 id="HHH">Property Binding with Angular</h1>
+    <h2>Binding the src property of an image:</h2>
+    <img [src]="itemImageUrl"> 
+    <h2>Using bind - syntax:</h2>
+    <img bind-src="itemImageUrl">
     <hr />
 
-    <div>
-        <h2>Button disabled state bound to isUnchanged property </h2>
-        <!-- 버튼의 활성화 여부를 `isUnchanged` 프로퍼티와 바인딩합니다. -->
-        <button [disabled]="isUnchanged">Save</button>
-        <button [disabled]="isUnchanged">Waro</button>
-    </div>
+    <h2>Binding to the colSplan property</h2>
+    <table border=1>
+        <tr><td>Column 1</td><td>Colunm 2</td></tr>
+        <!-- colSpan 프로퍼티는 캐멀 케이스 입니다. -->
+       <tr><td [colspan]="2">Span 2 columns</td></tr>
+    </table>
+
+    
+    <hr />
+    <h2>Button disabled state bound to isUnchanged property:</h2>
+    <!--  버튼의 활성화 여부를 `isUnchanged` 프로퍼티와 바인딩합니다. -->
+    <button [disabled]="isUnchanged">Disabled Button</button>
+    <hr /> 
+
+    <h2>Binding to a property of a directive</h2>
+    <p [ngClass]="classes">[ngClass] binding to the classes property making this blue</p>
+    <hr />
+    
+    <h2>Model property of a custom component:</h2>
+    <app-item-detail [childItem]="parentItem"></app-item-detail>
+    <app-item-detail  childItem="parentItem"></app-item-detail>
+
+    <h3>Pass objects;</h3>
+    <app-item-list [items]="currentItems"></app-item-list>
+    
+    <hr />
+    <h2>Initialized string:</h2>
+    <app-string-init prefix="This is a one-time initialized string."></app-string-init>
 
     <hr />
 
-    <div (keyup)="0">
-        <h2>HTML attributes and DOM properties</h2>
-        <p>1. Use the inspector to see the HTML attribute and DOM property values. Click the buttons to log values to the console.</p>
+    <h2>Property binding and interpolation</h2>
+    <p><img src="{{itemImageUrl}}"> is the <i>interpolated</i> image.</p>
+    <p><img [src]="itemImageUrl"> is the <i>property bound</i> image.</p>
+    
+    <p><span>"{{interpolationTitle}}" is the <i>interpolated</i>title.</span></p>
+    <p>"<span [innerHTML]="propertyTitle"></span>" is the <i>property bound</i> title.</p>
 
-        <label>HTML Attribute Initializes to "Sarah";
-          <input type="text" value="Sarah" #bindingInput></label>
-       <div>
-           <button (click)="getHTMLAttributeValue()">Get HTML attribute value</button> Won't change.
-       </div>
-      
-       <div>
-            <button (click)="getDOMPropertyValue()">Get DOM property value</button> Won't change.
-       </div>
+    <hr />
 
-       <p>2. Change the name in the input and click the buttons again.</p>
-       </div>
+    <h2>Malicious content</h2>
 
-       <hr />
+    <p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>
 
-       <div> 
-           <h3>Disabled property vs. attribute</h3>
-           <p>Use the inspector to see the Test Button work and its disabled property toggle.</p>
-       <div>
-       <button id="testButton" (click)="working()">Test Button</button>
-        </div>
-        <div>
-        <button (click)="toggleDisabled()">Toggle disabled property for Test Button</button>
-        <button (click)="toggleDisabled()">ww</button>
-        </div>
-
-        </div>
+    <!-- 
+        Angular가 아래와 같이 위험한 코들를 발경하면 경고를 표시합니다.
+        WARINING: 안정성 검사를 우회하는 방법은 http:/g.co/ng/security#xsss 를 참고하세요
+     -->
+     <p>"<span [innerHTML]="evilTitle"></span>" is the  <i>property bound</i> evil title.</p>
+</div> 

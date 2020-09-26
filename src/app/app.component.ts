@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -7,27 +7,19 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  @ViewChild('bindingInput') bindingInput: ElementRef;
-  
+  itemImageUrl = '../assets/phone.png';
   isUnchanged = true;
+  classes = 'special';
+  parentItme = 'lamp';
 
-  getHTMLAttributeValue(): any {
-    console.warn('HTML attribute value: ' + this.bindingInput.nativeElement.getAttribute('value'));
-  }
+  currentItems = [{
+    id: 21,
+    name: 'phone'
+  }];
 
-  getDOMPropertyValue(): any {
-    console.warn('DOM property value: '+ this.bindingInput.nativeElement.value); 
-  }
+  interpolationTitle = 'Interpolation';
+  propertyTitle = 'Property binding';
 
-  working(): any {
-    console.warn('Test Button works!');
-  }
-
-  toggleDisabled(): any {
-
-    const testButton = document.getElementById('testButton') as HTMLInputElement;
-    testButton.disabled = !testButton.disabled;
-    console.warn(testButton.disabled);
-  }
+  evilTitle = 'Template <script>alert("evil never sleeps"></script> Syntax';
 }
+ 
