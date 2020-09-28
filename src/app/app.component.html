@@ -1,60 +1,31 @@
+ 
+ <h1>Attribute, class, and style bindings</h1>
+ <h2>Attribute binding</h2>
+ <table border=1>
+    <!--  expression calculates colspan=2 -->
+    <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>
 
+    <!-- ERROR: There is no `colspan` property to set! 
+       <tr><td colaspan="{{1 + 1}}">Three-Four</td></tr>
+    --> 
+    <!-- colspan 프로퍼티는 캐멀 케이스입니다. -->
+    <tr><td [colSpan]="1 + 1">Three-Four</td></tr>
 
-<div>
-    <h1 id="HHH">Property Binding with Angular</h1>
-    <h2>Binding the src property of an image:</h2>
-    <img [src]="itemImageUrl"> 
-    <h2>Using bind - syntax:</h2>
-    <img bind-src="itemImageUrl">
-    <hr />
+    <tr><td>Five</td><td>Six</td></tr>
+ </table>
 
-    <h2>Binding to the colSplan property</h2>
-    <table border=1>
-        <tr><td>Column 1</td><td>Colunm 2</td></tr>
-        <!-- colSpan 프로퍼티는 캐멀 케이스 입니다. -->
-       <tr><td [colspan]="2">Span 2 columns</td></tr>
-    </table>
+ <div>
+     <!-- 웹 접근성 향상을 위해 ARIA 어트리뷰트를 지정할 수 있습니다. -->
+     <button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+ </div>
 
-    
-    <hr />
-    <h2>Button disabled state bound to isUnchanged property:</h2>
-    <!--  버튼의 활성화 여부를 `isUnchanged` 프로퍼티와 바인딩합니다. -->
-    <button [disabled]="isUnchanged">Disabled Button</button>
-    <hr /> 
+ <hr />
 
-    <h2>Binding to a property of a directive</h2>
-    <p [ngClass]="classes">[ngClass] binding to the classes property making this blue</p>
-    <hr />
-    
-    <h2>Model property of a custom component:</h2>
-    <app-item-detail [childItem]="parentItem"></app-item-detail>
-    <app-item-detail  childItem="parentItem"></app-item-detail>
+ <h2>Styling precedence</h2>
 
-    <h3>Pass objects;</h3>
-    <app-item-list [items]="currentItems"></app-item-list>
-    
-    <hr />
-    <h2>Initialized string:</h2>
-    <app-string-init prefix="This is a one-time initialized string."></app-string-init>
+ <h3>기본 순서</h3>
 
-    <hr />
+ <!-- `class.special`이 `class` 보다 우선순위가 높습니다. -->
+ <div [class.special]="isSpecial" [class]="calssExpr">Some text.</div>
 
-    <h2>Property binding and interpolation</h2>
-    <p><img src="{{itemImageUrl}}"> is the <i>interpolated</i> image.</p>
-    <p><img [src]="itemImageUrl"> is the <i>property bound</i> image.</p>
-    
-    <p><span>"{{interpolationTitle}}" is the <i>interpolated</i>title.</span></p>
-    <p>"<span [innerHTML]="propertyTitle"></span>" is the <i>property bound</i> title.</p>
-
-    <hr />
-
-    <h2>Malicious content</h2>
-
-    <p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>
-
-    <!-- 
-        Angular가 아래와 같이 위험한 코들를 발경하면 경고를 표시합니다.
-        WARINING: 안정성 검사를 우회하는 방법은 http:/g.co/ng/security#xsss 를 참고하세요
-     -->
-     <p>"<span [innerHTML]="evilTitle"></span>" is the  <i>property bound</i> evil title.</p>
-</div> 
+ <h3>소스별 우선순위</h3>
