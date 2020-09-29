@@ -1,24 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
-// import { Item } from '../item';
-// import { ITEMS } from '../mock-items';
+/* tslint:disable use-unput-property-decorator use-output-property-decorator */
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Item } from '../item';
 
 @Component({
   selector: 'app-item-detail',
-  templateUrl: './item-detail.component.html',
-  styleUrls: ['./item-detail.component.css']
+  styleUrls: ['./item-detail.component.css'],
+  templateUrl: './item-detail.component.html'
 })
-export class ItemDetailComponent implements OnInit {
+export class ItemDetailComponent {
 
-    @Input() childItem: string;
+  @Input() item;
+  itemImageUrl = 'assets/teapot.svg';
+  lineThrough = '';
+  displayNone = '';
+  @Input() prefix = '';
 
-    // items = ITEMS;
+  //  이 컴포넌트는 직접 히어로를 삭제하지 않고 히어로 삭제 요청을 보내기만 합니다.
+  @Output() deleteRequest = new EventEmitter<Item>();
 
-    currentItem = 'bananas in boxes';
-
-    constructor() { }
-
-    ngOninit() {
-
-    }
-
+  delete() {
+    this.deleteRequest.emit(this.item);
+    this.displayNone = this.displayNone ? '' : 'none';
+    this.lineThrough = this.lineThrough ? '' : 'line-through';
+  }
+  
 }

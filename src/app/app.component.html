@@ -1,31 +1,50 @@
+ <h1 id="event-binding">Event Binding</h1>
  
- <h1>Attribute, class, and style bindings</h1>
- <h2>Attribute binding</h2>
- <table border=1>
-    <!--  expression calculates colspan=2 -->
-    <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>
+ <div class="group">
+    <h3>Target event</h3>
+    <button (click)="onSave($event)">Save</button>
 
-    <!-- ERROR: There is no `colspan` property to set! 
-       <tr><td colaspan="{{1 + 1}}">Three-Four</td></tr>
-    --> 
-    <!-- colspan 프로퍼티는 캐멀 케이스입니다. -->
-    <tr><td [colSpan]="1 + 1">Three-Four</td></tr>
+    <button on-click="onSave($event)">on-cilick Save</button>
 
-    <tr><td>Five</td><td>Six</td></tr>
- </table>
+    <h4>myClick is an event on the custom ClickDirective</h4>
+    <button (myClick)="clickMessage=$event" clickable>click with myclick</button>
+    {{clickMessage}}
 
- <div>
-     <!-- 웹 접근성 향상을 위해 ARIA 어트리뷰트를 지정할 수 있습니다. -->
-     <button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
  </div>
 
- <hr />
+ <div class="group">
+    <h3>$event and event handling statements</h3>
+    <h4>Result: {{currentItem.name}}</h4>
 
- <h2>Styling precedence</h2>
+    <input [value]="currentItem.name"
+           (input)="currentItem.name=$event.target.value" >
+   without NgModel
+ </div>
 
- <h3>기본 순서</h3>
+ <div class="group">
+    <h3>Binding to a nested component</h3>
+    <h4>Custom events with EventEmitter</h4>
+    <app-item-detail (deleteRequest)="deleteItem($event)" [item]="currentItem"></app-item-detail>
 
- <!-- `class.special`이 `class` 보다 우선순위가 높습니다. -->
- <div [class.special]="isSpecial" [class]="calssExpr">Some text.</div>
 
- <h3>소스별 우선순위</h3>
+    <h4>Click to see event target class:</h4>
+ <div class="parent-div" (click)="onClickMe($event)" clickable>Click me (parent)
+    <div class="child-div">Click me too! (child) </div>
+ </div>
+
+ <h3>Saves only once:</h3>
+ <div (click)="onSave()" clickable>
+    <button (click)="onSave($event)">Save, no propagation</button>
+ </div>
+
+ <h3>Saves twice:</h3>
+ <div (click)="onSave()" clickable>
+    <button (click)="onSave()">Save with propagation</button>
+ </div>
+
+
+ <!-- 
+ Copyright Google LLC. All Rights Reserved.
+ Use of this source code is governed by an MIT-style license that
+ can be found in the LICENSE file at http://angular.io/license 
+  -->

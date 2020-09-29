@@ -1,29 +1,25 @@
-.special {
-    background-color: #1976d2;
-    color: #ffffff;
-  }
-  
-  .item {
-    font-weight: bold;
-  }
-  .clearance {
-    border: 2px solid #d41e2e;
-  
-  }
-  .item-clearance {
-    font-style: italic;
-  
-  }
-  
-  .new-class {
-    background-color: #ed1b2f;
-    font-style: italic;
-    color: #fff;
-  }
-  
-  
-  /*
-  Copyright Google LLC. All Rights Reserved.
-  Use of this source code is governed by an MIT-style license that
-  can be found in the LICENSE file at http://angular.io/license
-  */
+ .group {
+   background-color:#dae8f9;
+   padding: 1rem;
+   margin: 1rem 0;
+ }
+
+ .parent-div {
+   background-color: #bdd1f7;
+   border: solid 1px rgb(25, 118, 210);
+   padding: 1rem;
+ }
+
+ .parent-div:hover {
+   background-color: #8fb4f9;
+ }
+
+ .child-div{
+   margin-top: 1rem;
+   background-color: #fff;
+   padding: 1rem;
+ }
+
+ .child-div:hover{
+   background-color: #eee;
+ }
