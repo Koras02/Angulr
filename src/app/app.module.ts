@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { CompWithHostBindingComponent } from './comp-with-host-binding.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { ClickDirective } from './click.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompWithHostBindingComponent
+    ItemDetailComponent,
+    ClickDirective
   ],
   imports: [
     BrowserModule
@@ -16,4 +19,6 @@ import { CompWithHostBindingComponent } from './comp-with-host-binding.component
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {  }
+export class AppModule { }
+
+
