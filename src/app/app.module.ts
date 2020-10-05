@@ -1,20 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
-import { ClickDirective } from './click.directive';
-
+import { SizerComponent } from './sizer/sizer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemDetailComponent,
-    ClickDirective
+    SizerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
