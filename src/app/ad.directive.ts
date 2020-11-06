@@ -5,4 +5,4 @@ import { Directive, ViewContainerRef } from '@angular/core';
 })
 export class AdDirective { 
   constructor(public viewContainerRef: ViewContainerRef) {  }
-}
+}sss
